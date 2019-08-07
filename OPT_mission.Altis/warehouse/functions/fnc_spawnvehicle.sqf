@@ -35,6 +35,9 @@ _vec = createVehicle [_vecType, [(random 100) - 50, (random 100) - 50, 1000 + ra
 if (typeName _spawnObj == "OBJECT") then { _vec setDir (getDir _spawnObj); };
 private _scanRadius = sizeOf _vecType;
 
+/* disables thermal vision */
+_vec disableTIEquipment true;
+
 // debug...
 // hintSilent str _scanRadius;
 
