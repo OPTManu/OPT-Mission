@@ -26,11 +26,11 @@ GVAR(spawnInProgress) = true;
 private _heightOffset = 0.1;
 private _placed = 0; 
 
-// Komplette Liste aller möglichen Kaufgegenstände erstellen
+// Komplette Liste aller mÃ¶glichen KaufgegenstÃ¤nde erstellen
 private _items = [];
 { _items append (_x select [0,1]); } forEach OPT_warehouse_all;
 
-// Fahrzeug schonmal spawnen (notwendig für Größenermittlung)
+// Fahrzeug schonmal spawnen (notwendig fÃ¼r GrÃ¶ÃŸenermittlung)
 _vec = createVehicle [_vecType, [(random 100) - 50, (random 100) - 50, 1000 + random 100], [], 0, "NONE"];
 if (typeName _spawnObj == "OBJECT") then { _vec setDir (getDir _spawnObj); };
 private _scanRadius = sizeOf _vecType;
@@ -38,16 +38,16 @@ private _scanRadius = sizeOf _vecType;
 // debug...
 // hintSilent str _scanRadius;
 
-// Kleine Gegenstände nicht zu nah beisammen spawnen
+// Kleine GegenstÃ¤nde nicht zu nah beisammen spawnen
 if (_scanRadius < 2) then { _scanRadius = 2; };
 
-// Große Gegenstände (wie z.B. der Huron) sollen ihren Platzbedarf mal nicht so übertreiben
+// GroÃŸe GegenstÃ¤nde (wie z.B. der Huron) sollen ihren Platzbedarf mal nicht so Ã¼bertreiben
 if (_scanRadius > 20) then { _scanRadius = 20; };
 
 private _spiralMaxPoints = 100; 
 private _spiralDistance = 0.005;
 
-// Spiralförmig vom Mittelpunkt aus nach Freifläche suchen
+// SpiralfÃ¶rmig vom Mittelpunkt aus nach FreiflÃ¤che suchen
 for "_i" from 0 to _spiralMaxPoints step 1 do 
 { 
 	scopeName "scan"; 
@@ -56,7 +56,7 @@ for "_i" from 0 to _spiralMaxPoints step 1 do
 	private _y = _spiralDistance * _angle * sin _angle; 
 	private _posi = getPosASL _spawnObj vectorAdd [_x, _y, _heightOffset];
 
-	// Ist etwas gefährliches im Weg?
+	// Ist etwas gefÃ¤hrliches im Weg?
 	// Liste aller Basis-Klassen: https://forums.bohemia.net/forums/topic/202400-list-of-vehicle-base-classes/?do=findComment&comment=3157238
 	private _objList = nearestObjects [_posi, _items, _scanRadius];
 	if (isNil {_objList select 0}) then 
@@ -74,17 +74,22 @@ for "_i" from 0 to _spiralMaxPoints step 1 do
 		// Create Vehicle Crew
 		// James: Nutze stattdessen UAV classname aus setup
 		_uavs = [
-			"OPT_B_UGV_01_F",
-			"OPT_B_UGV_01_rcws_F",
-			"OPT_O_UGV_01_F",
-			"OPT_O_UGV_01_rcws_F",
-			"B_UCSV_01",
-			"O_UCSV_01",
-			"OPT_B_UAV_01_F",
-			"OPT_O_UAV_01_F",
-			"OPT_B_Static_Designator_01_F",
-			"OPT_O_Static_Designator_02_F",
-			"OPT_O_T_UGV_01_ghex_F"
+			//BLUFOR
+			"B_UAV_02_F", 				//Greyhawk
+			"B_T_UAV_03_F", 			//Falcon
+			"B_UGV_01_F", 				//Stomper
+			"B_UGV_01_rcws_F", 			//Stomper RCWS
+			"B_UAV_01_F", 				//Darter
+			"B_Static_Designator_01_F", //Remote Designator
+			//OPFOR
+			"O_UAV_02_F", 				//Ababil
+			"O_T_UAV_04_CAS_F",			//Fenghuang
+			"O_UGV_01_F",				//Saif hextarn
+			"O_UGV_01_rcws_F",			//Saif RCWS hextarn
+			"O_T_UGV_01_ghex_F",		//Saif tropentarn
+			"O_T_UGV_01_rcws_ghex_F",	//Saif RCWS tropentarn
+			"O_UAV_01_F",				//Tayran
+			"O_Static_Designator_02_F"	//Remote Designator
 		];
 
 		if (_vecType in (_uavs + GVARMAIN(big_uavs))) then {
@@ -93,7 +98,7 @@ for "_i" from 0 to _spiralMaxPoints step 1 do
 			
 			systemChat format ["shop CilbEV B:%1",(isNil "CLib_fnc_globalEvent")];
 			
-			//Drohnen marker erstellung für Clib
+			//Drohnen marker erstellung fÃ¼r Clib
 			["OPTAddMarkerDrohneGPS",_vec] call CLib_fnc_globalEvent;
 
 		};
