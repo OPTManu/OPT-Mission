@@ -148,7 +148,7 @@ force OPT_cargo_on = true;
 force OPT_fieldrepair_on = true;
 force OPT_gps_on = false;
 force OPT_hud_on = true;
-force OPT_marker_on = true;
+force OPT_marker_on = false;
 force OPT_mhq_on = false;
 force OPT_persistence_on = false;
 force OPT_radar_on = false;
@@ -157,7 +157,7 @@ force OPT_tfar_on = true;
 force OPT_training_on = false;
 force OPT_uav_on = true;
 force OPT_Waffenruhemarker_on = true;
-force OPT_waffenwechsel_on = true;
+force OPT_waffenwechsel_on = false;
 
 // OPT Log-System
 force OPT_log_distanceFromBase = 1000;
@@ -168,14 +168,14 @@ force OPT_marker_customMarkerTxt = "#z";
 force OPT_marker_useRealTime = false;
 
 // OPT Mission
-force OPT_csat_budget = "7140000";
-force OPT_dispo = "3000000";
-force OPT_nato_budget = "7140000";
-force OPT_PARAM_FREEZE_TIME = 30;
+force OPT_csat_budget = "10000000";
+force OPT_dispo = "100000";
+force OPT_nato_budget = "10000000";
+force OPT_PARAM_FREEZE_TIME = 20;
 force OPT_PARAM_PLAYTIME = 9000;
 force OPT_PARAM_SHOW_INTRO = true;
-force OPT_PARAM_TEAMBALANCE = 5.10248;
-force OPT_PARAM_TRUCETIME = 420;
+force OPT_PARAM_TEAMBALANCE = 15;
+force OPT_PARAM_TRUCETIME = 90;
 force OPT_repairSystem_refuelCost = "1000";
 force OPT_repairSystem_repairCost = "1000";
 force OPT_respawn_cost_max = "3000";
