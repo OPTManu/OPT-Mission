@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=40508;
+		nextID=40638;
 	};
 	class Camera
 	{
-		pos[]={11116.672,107.48979,25415.41};
-		dir[]={-0.73213142,-0.20084526,-0.65093082};
-		up[]={-0.15011889,0.97961771,-0.13346966};
-		aside[]={-0.66446823,-3.9942461e-007,0.74735695};
+		pos[]={11209.695,37.794357,25408.637};
+		dir[]={0.73242682,-0.50215459,0.45986286};
+		up[]={0.4252969,0.86476505,0.26702777};
+		aside[]={0.53176272,-5.0838571e-007,-0.84694439};
 	};
 };
 binarizationWanted=0;
@@ -293,8 +293,8 @@ class AddonsMetaData
 		class Item22
 		{
 			className="cba_jam";
-			name="Community Base Addons - Gemeinsame Munition und Magazine";
-			author="CBA-Team";
+			name="Community Base Addons - Joint Ammo Magazines";
+			author="CBA Team";
 			url="https://www.github.com/CBATeam/CBA_A3";
 		};
 		class Item23
@@ -559,6 +559,9 @@ class ScenarioData
 {
 	author="Manu";
 	overviewText="Version 2.0.2" \n "Stand vom 11.12.2019";
+	respawnDialog=0;
+	respawn=3;
+	respawnDelay=5.3929882;
 };
 class CustomAttributes
 {
@@ -594,7 +597,7 @@ class CustomAttributes
 										"STRING"
 									};
 								};
-								value="None";
+								value="Counter";
 							};
 						};
 					};
@@ -50622,7 +50625,7 @@ class Mission
 									type="rectangle";
 									a=49.559002;
 									b=174.3134;
-									angle=223.86674;
+									angle=223.86671;
 									id=5816;
 									atlOffset=180.43175;
 								};
@@ -56753,7 +56756,7 @@ class Mission
 										{
 											dataType="Trigger";
 											position[]={11208.008,-174.25586,25382.48};
-											angle=3.7977934;
+											angle=3.7977929;
 											class Attributes
 											{
 												text="CSAT Todeszone";
@@ -56848,7 +56851,7 @@ class Mission
 										{
 											dataType="Trigger";
 											position[]={11114.893,23.41925,25329.711};
-											angle=4.7903562;
+											angle=4.7903557;
 											class Attributes
 											{
 												name="nato_trigger_beam";
