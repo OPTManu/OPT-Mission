@@ -1,0 +1,21 @@
+// OPT HUD
+force force OPT_hud_score = false;
+
+// OPT Komponenten
+force force OPT_marker_on = false;
+force force OPT_training_on = false;
+force force OPT_waffenwechsel_on = false;
+
+// OPT Mission
+force force OPT_csat_budget = "10000000";
+force force OPT_dispo = "100000";
+force force OPT_nato_budget = "10000000";
+force force OPT_PARAM_FREEZE_TIME = 19.6079;
+force force OPT_PARAM_PLAYTIME = 9000;
+force force OPT_PARAM_SHOW_INTRO = true;
+force force OPT_PARAM_TEAMBALANCE = 15;
+force force OPT_PARAM_TRUCETIME = 90;
+force force OPT_repairSystem_refuelCost = "1000";
+force force OPT_repairSystem_repairCost = "1000";
+force force OPT_respawn_cost_max = "3000";
+force force OPT_respawn_cost_min = "1000";
