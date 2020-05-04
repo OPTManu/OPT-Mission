@@ -8,29 +8,15 @@ east -> Angriffsziel für NATO
 #include "script_component.hpp"
 
 GVARMAIN(nato_flags_pos) = [
-
-// Basis 
-
-
-	   [14352,8600, west,"69 - schöne Aussicht",true], //
-	   [13482,9579, west,"115 - Goldgrube",true], // 
-	   [13964,10011, west,"84 - alte Mine",true] // 
-	   
-    
-
+	[8501,12446, west,"28 - Raststätte",true],
+	[7293,12824, west,"61 - Batterie Dora",true],
+	[8229,11985, west,"111 - Tomahawk Stellung",true]  
 ];
 
 GVARMAIN(csat_flags_pos) = [
-
-//Basis 
-
-	   [13049,10656, east,"04 - Dogana Bluepearl",true], // 
-	   [13763,10808, east,"05 - Checkpoint Bravo",true], //
-	   [13427,11714, east,"73 - Bluepearl Brecheranlage",true], // 
-	   [13784,11900, east,"71 - Trockendock",true] // 
-
-
-	   
+	[6696,12354, east,"48 - Legales Waffenlager",true],
+	[7030,10802, east,"49 - Hbf. Hulabula",true],
+	[8258,11148, east,"52 - Großmeisters Tempel",true]
 ];
 
 
@@ -55,7 +41,7 @@ if (isServer) then
 			}
 			else
 			{
-				_flag setFlagTexture "bilder\sword_fahne.paa";
+				_flag setFlagTexture "bilder\arf_fahne.paa";
 				_flag setVariable ["owner", _owner, true];
 			};
 		};
@@ -78,7 +64,7 @@ if (isServer) then
 			}
 			else
 			{
-				_flag setFlagTexture "bilder\arf_fahne.paa";
+				_flag setFlagTexture "bilder\sword_fahne.paa";
 				_flag setVariable ["owner", _owner, true];
 			};
 		};

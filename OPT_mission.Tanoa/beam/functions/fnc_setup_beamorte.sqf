@@ -49,10 +49,18 @@
 #include "script_component.hpp"
 
 //West
-GVAR(locations_west) = [];
+GVAR(locations_west) = [
+	[[8501,0,12446],"28 - Raststätte",1],
+	[[7293,0,12824],"61 - Batterie Dora",1],
+	[[8229,0,11985],"111 - Tomahawk Stellung",1]  
+];
 
 //East
-GVAR(locations_east) = [];
+GVAR(locations_east) = [
+	[[6696,0,12354],"48 - Legales Waffenlager",1],
+	[[7030,0,10802],"49 - Hbf. Hulabula",1],
+	[[8258,0,11148],"52 - Großmeisters Tempel",1]
+];
 
 /* vehicles requiring special clearance for beaming (eg. tanks) */
 GVAR(restricted_vehicles) = 
