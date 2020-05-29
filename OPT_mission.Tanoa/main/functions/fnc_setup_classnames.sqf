@@ -394,3 +394,38 @@ GVARMAIN(big_uavs) = [
 	"OPT_O_T_UAV_04_CAS_F",
 	"OPT_B_T_UAV_03_dynamicLoadout_F"
 ];
+
+/* short range scopes */
+GVARMAIN(sr_scopes) = [
+	"optic_ACO_grn_smg",
+	"optic_Aco_smg",
+	"optic_Holosight_smg_blk_F",
+	"optic_ACO_grn",
+	"optic_Aco",
+	"optic_Holosight_blk_F"
+];
+
+/* mid range scopes */
+GVARMAIN(mr_scopes) = [
+	"optic_Arco_blk_F",
+	"optic_Hamr",
+	"optic_MRCO",
+	"optic_ERCO_blk_F"
+];
+
+/* long range scopes */
+GVARMAIN(lr_scopes) = [
+	"optiv_NVS",
+	"optic_DMS",
+	"optic_SOS",
+	"optic_KHS_blk",
+	"optic_AMS",
+	"optic_LRPS_ghex_F",
+	"optic_LRPS_tna_F"
+];
+
+/* forbidden scopes - implemented for future usage */
+GVARMAIN(forbidden_scopes) = [
+	"optic_tws",
+	"optic_tws_mg"
+];

@@ -20,6 +20,9 @@ params ["_unit", "_container","_item"];
 private _typeOfPlayer = typeOf _unit;
 private _bad_item_used = false;
 
+private _primaryWeaponItems = primaryWeaponItems _unit;
+private _bad_scope_used = false;
+
 // check SMG
 if !(_typeOfPlayer in (GVARMAIN(officer) + GVARMAIN(pilots) + GVARMAIN(crew))) then {
     {
@@ -152,6 +155,33 @@ if !(_typeOfPlayer in GVARMAIN(spaeher)) then {
     } forEach ["OPT_Laserdesignator","OPT_Laserdesignator_02","OPT_Laserdesignator_01_khk_F","OPT_Laserdesignator_02_ghex_F"];
 };
 
+/* long range scope restriction */
+if !(_typeOfPlayer in GVARMAIN(snipers) + GVARMAIN(reconSnipers)) then {
+    if ((_primaryWeaponItems select 2) in GVARMAIN(lr_scopes)) then {
+        _unit removePrimaryWeaponItem (_primaryWeaponItems select 2);
+        _bad_scope_used = true;
+    };  
+};
+
+/* mid range scope restriction */
+if (_typeOfPlayer in GVARMAIN(soldatSMG) + GVARMAIN(soldatMG) + GVARMAIN(crew) + GVARMAIN(pilots)) then {
+    if ((_primaryWeaponItems select 2) in GVARMAIN(mr_scopes) + GVARMAIN(lr_scopes)) then {
+        _unit removePrimaryWeaponItem (_primaryWeaponItems select 2);
+        _bad_scope_used = true;
+    };  
+};
+
+/* forbidden scopes removal - implemented for future usage */
+if ((_primaryWeaponItems select 2) in GVARMAIN(forbidden_scopes)) then {
+        _unit removePrimaryWeaponItem (_primaryWeaponItems select 2);
+        _bad_scope_used = true;
+};  
+
+
 if (_bad_item_used) then {
     ["Regelverstoß", "Waffe unzulässig für aktuelle Spielerklasse.<br/>Waffe wurde entfernt.", "red"] call EFUNC(gui,message);
+};
+
+if (_bad_scope_used) then {
+    ["Regelverstoß", "Visierung unzulässig für aktuelle Spielerklasse.<br/>Visier wurde entfernt.", "red"] call EFUNC(gui,message);
 };
