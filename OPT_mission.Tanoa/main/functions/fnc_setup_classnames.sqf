@@ -429,3 +429,9 @@ GVARMAIN(forbidden_scopes) = [
 	"optic_tws",
 	"optic_tws_mg"
 ];
+
+/* classes qualified for placing explosives and using a mine detector */
+GVARMAIN(demolitionExperts) = [
+	"OPT_CSAT_Sprengmeister",
+	"OPT_NATO_Sprengmeister"
+];

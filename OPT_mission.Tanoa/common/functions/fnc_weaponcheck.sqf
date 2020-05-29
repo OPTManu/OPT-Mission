@@ -18,17 +18,22 @@
 
 params ["_unit", "_container","_item"];
 private _typeOfPlayer = typeOf _unit;
-private _bad_item_used = false;
 
 private _primaryWeaponItems = primaryWeaponItems _unit;
+private _uniformItems = uniformItems _unit;
+private _vestItems = vestItems _unit;
+private _backpackItems = backpackItems _unit;
+
+private _bad_weapon_used = false;
 private _bad_scope_used = false;
+private _bad_item_used = false;
 
 // check SMG
 if !(_typeOfPlayer in (GVARMAIN(officer) + GVARMAIN(pilots) + GVARMAIN(crew))) then {
     {
         if (_x in GVARMAIN(SMG)) then {
             _unit removeWeapon _x;
-            _bad_item_used = true;
+            _bad_weapon_used = true;
         };
     } forEach (weapons _unit);
 };
@@ -38,7 +43,7 @@ if !(_typeOfPlayer in GVARMAIN(Lightrocketmen)) then {
     {
         if (_x in GVARMAIN(lightlaunchers)) then {
             _unit removeWeapon _x;
-            _bad_item_used = true;
+            _bad_weapon_used = true;
         };
     } forEach (weapons _unit);
 };
@@ -48,7 +53,7 @@ if !(_typeOfPlayer in GVARMAIN(Heavyrocketmen)) then {
     {
         if (_x in GVARMAIN(Heavylaunchers)) then {
             _unit removeWeapon _x;
-            _bad_item_used = true;
+            _bad_weapon_used = true;
         };
     } forEach (weapons _unit);
 };
@@ -58,7 +63,7 @@ if !(_typeOfPlayer in GVARMAIN(AArocketmen)) then {
     {
         if (_x in GVARMAIN(AAlaunchers)) then {
             _unit removeWeapon _x;
-            _bad_item_used = true;
+            _bad_weapon_used = true;
         };
     } forEach (weapons _unit);
 };
@@ -68,7 +73,7 @@ if !(_typeOfPlayer in GVARMAIN(reconSnipers)) then {
     {
         if (_x in GVARMAIN(reconSniperRifles)) then {
             _unit removeWeapon _x;
-            _bad_item_used = true;
+            _bad_weapon_used = true;
         };
     } forEach (weapons _unit);
 };
@@ -78,7 +83,7 @@ if !(_typeOfPlayer in GVARMAIN(snipers)) then {
     {
         if (_x in GVARMAIN(sniperRifles)) then {
             _unit removeWeapon _x;
-            _bad_item_used = true;
+            _bad_weapon_used = true;
         };
     } forEach (weapons _unit);
 };
@@ -88,7 +93,7 @@ if !(_typeOfPlayer in GVARMAIN(DMRsnipers)) then {
     {
         if (_x in GVARMAIN(DMRsniperRifles)) then {
             _unit removeWeapon _x;
-            _bad_item_used = true;
+            _bad_weapon_used = true;
         };
     } forEach (weapons _unit);
 };
@@ -98,7 +103,7 @@ if !(_typeOfPlayer in GVARMAIN(soldatMG)) then {
     {
         if (_x in GVARMAIN(MG)) then {
             _unit removeWeapon _x;
-            _bad_item_used = true;
+            _bad_weapon_used = true;
         };
     } forEach (weapons _unit);
 };
@@ -108,7 +113,7 @@ if !(_typeOfPlayer in GVARMAIN(soldatSMG)) then {
     {
         if (_x in GVARMAIN(SMG)) then {
             _unit removeWeapon _x;
-            _bad_item_used = true;
+            _bad_weapon_used = true;
         };
     } forEach (weapons _unit);
 };
@@ -118,7 +123,7 @@ if !(_typeOfPlayer in GVARMAIN(recon)) then {
     {
         if (_x in GVARMAIN(reconRifles)) then {
             _unit removeWeapon _x;
-            _bad_item_used = true;
+            _bad_weapon_used = true;
         };
     } forEach (weapons _unit);
 };
@@ -128,7 +133,7 @@ if !(_typeOfPlayer in GVARMAIN(grenadiers)) then {
     {
         if (_x in GVARMAIN(grenadelaunchers)) then {
             _unit removeWeapon _x;
-            _bad_item_used = true;
+            _bad_weapon_used = true;
         };
     } forEach (weapons _unit);
 };
@@ -177,11 +182,23 @@ if ((_primaryWeaponItems select 2) in GVARMAIN(forbidden_scopes)) then {
         _bad_scope_used = true;
 };  
 
+/* removes mine detectors for unauthorized classes */
+if !(_typeOfPlayer in GVARMAIN(demolitionExperts)) then {
+    if (("MineDetector" in _uniformItems) or ("MineDetector" in _vestItems) or ("MineDetector" in _backpackItems)) then {
+        _unit removeItem "MineDetector";
+        _bad_item_used = true;
+    };
+};
 
-if (_bad_item_used) then {
+
+if (_bad_weapon_used) then {
     ["Regelverstoß", "Waffe unzulässig für aktuelle Spielerklasse.<br/>Waffe wurde entfernt.", "red"] call EFUNC(gui,message);
 };
 
 if (_bad_scope_used) then {
     ["Regelverstoß", "Visierung unzulässig für aktuelle Spielerklasse.<br/>Visier wurde entfernt.", "red"] call EFUNC(gui,message);
+};
+
+if (_bad_item_used) then {
+    ["Regelverstoß", "Gegenstand unzulässig für aktuelle Spielerklasse.<br/>Gegenstand wurde entfernt.", "red"] call EFUNC(gui,message);
 };
